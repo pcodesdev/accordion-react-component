@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "./styles.css";
 
 import AccordionItem from "./AccordionItem";
@@ -21,9 +23,10 @@ const faqs = [
 ];
 
 export default function Accordion() {
+  const [curOpen, setCurOpen] = useState(null);
   return (
     <div className="accordion">
-      {faqs.map((question, index)=> <AccordionItem title={question.title} text={question.text} num={index} key={index} />)}
+      {faqs.map((question, index) => <AccordionItem curOpen={curOpen} onOpen={setCurOpen} title={question.title} num={index} key={index}>{question.text}</AccordionItem>)}
     </div>
   );
 }
